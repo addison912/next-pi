@@ -7,12 +7,12 @@ export default async function Home() {
   let href = userId ? "/market" : "/new-user";
 
   return (
-    <div className="w-screen h-screen bg-slate-900 flex justify-center items-center">
-      <div className="w-full max-w-[600px] mx-auto">
-        <h1 className="text-6xl mb-4 text-gray-100 ">Predictit Insights</h1>
+    <div className="flex h-screen w-screen items-center justify-center bg-slate-900">
+      <div className="mx-auto w-full max-w-[600px]">
+        <h1 className="mb-4 text-6xl text-gray-100 ">Predictit Insights</h1>
         <div>
           <Link href={href}>
-            <button className="bg-sky-600 px-4 py-2 rounded-md text-lg">
+            <button className="rounded-md bg-sky-600 px-4 py-2 text-lg">
               get started
             </button>
           </Link>
