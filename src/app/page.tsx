@@ -2,9 +2,9 @@ import Link from "next/link";
 import { auth } from "@clerk/nextjs";
 
 export default async function Home() {
-  const { userId } = await auth();
+  const { userId } = auth();
 
-  let href = userId ? "/market" : "/new-user";
+  const href = userId ? "/market" : "/new-user";
 
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-slate-900">

@@ -1,19 +1,23 @@
-import { db } from "@/server/db";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import { db } from "@/server/db";
 
 const createUser = async () => {
   const user = await currentUser();
-
+  if (!user?.emailAddresses[0]?.emailAddress) {
+    return new Error("No user found");
+  }
   const match = await db.user.findUnique({
-    where: { clerkId: user?.id as string },
+    where: {
+      clerkId: user.id,
+    },
   });
 
   if (!match)
     await db.user.create({
       data: {
-        clerkId: user?.id as string,
-        email: user?.emailAddresses[0]?.emailAddress as string,
+        clerkId: user.id,
+        email: user.emailAddresses[0].emailAddress,
       },
     });
 

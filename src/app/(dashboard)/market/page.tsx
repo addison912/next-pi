@@ -1,5 +1,5 @@
 const MarketPage = async () => {
-  return <div>Market Page</div>;
+  return <div className=" text-text-primary">Market Page</div>;
 };
 
 export default MarketPage;

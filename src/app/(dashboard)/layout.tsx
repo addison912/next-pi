@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import Header from "@/app/components/Header";
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {

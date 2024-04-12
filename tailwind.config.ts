@@ -1,17 +1,24 @@
-import type { Config } from "tailwindcss";
+import { type Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
-const config: Config = {
+export default {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "gradient-307": "linear-gradient(307deg, var(--tw-gradient-stops))",
+      },
+      colors: {
+        "dm-text": "#f8f8f8",
+        "dm-bg": "var(gray-900)",
+        "lm-text": "#1a1a1a",
+        "lm-bg": "#f8f8f8",
+        "background-primary": "#1a1a1a",
       },
     },
   },
   plugins: [],
-};
-export default config;
+} satisfies Config;
