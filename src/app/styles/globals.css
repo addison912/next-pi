@@ -7,9 +7,14 @@
   min-width: 0;
 }
 
+body {
+  @apply text-white;
+}
+
 :root {
   --header-height: 56px;
   --aside-width: 144px;
   --font-size: 16px;
   --font-color: #fafafa;
+  --flex-gap: 16px;
 }

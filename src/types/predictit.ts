@@ -1,4 +1,4 @@
-type MarketContract = {
+export type MarketContract = {
   id: number;
   dateEnd: string;
   image: string;
@@ -7,29 +7,29 @@ type MarketContract = {
   status: string;
   lastTradePrice: number;
   bestBuyYesCost: number;
-  bestBuyNoCost: number;
-  bestSellYesCost: number;
+  bestBuyNoCost: number | null;
+  bestSellYesCost: number | null;
   bestSellNoCost: number;
   lastClosePrice: number;
   displayOrder: number;
 };
 
-export interface Market {
+export type Market = {
   id: number;
   name: string;
   shortName: string;
   image: string;
   url: string;
   contracts: MarketContract[];
-  timestamp: string;
+  timeStamp: string;
   status: string;
-}
+};
 
-export interface MarketResponse {
+export type MarketResponse = {
   markets: Market[];
-}
+};
 
-export interface ContractResponse {
+export type Contract = {
   contractId: number;
   contractName: string;
   marketId: number;
@@ -53,9 +53,11 @@ export interface ContractResponse {
   dateOpened: string;
   hiddenByDefault: boolean;
   displayOrder: number;
-}
+};
 
-type ContractOrderEntity = {
+export type ContractResponse = Contract[];
+
+export type OrderBookContractEntity = {
   contractId: number;
   costPerShareNo: number;
   costPerShareYes: number;
@@ -64,10 +66,34 @@ type ContractOrderEntity = {
   tradeType: number;
 };
 
-export interface ContractOrderBook {
-  noOrders: ContractOrderEntity[] | 0;
+export type OrderBookContract = {
+  noOrders: OrderBookContractEntity[] | 0;
   timestamp?: string;
-  yesOrders: ContractOrderEntity[];
-}
+  yesOrders: OrderBookContractEntity[];
+};
 
-export type OrderBookResponse = Record<string, ContractOrderBook>;
+/**
+ * This is the response from the endpoint https://predictit-f497e.firebaseio.com/contractOrderBook.json
+ */
+export type OrderBookResponse = Record<string, OrderBookContract>;
+
+/* -------------------------------------------------------------------------- */
+/*                              // Modified types                             */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * This is the contract data that includes the order book data
+ */
+export type FullContractData = Contract & { orders: OrderBookContract };
+
+export type ContractOrderRec = {
+  shares: number;
+  ifYes: number;
+  ifNo: number;
+  noPrice: number;
+  ifYesPayout?: number;
+};
+
+export type NegRisk = { minWin: number; sumNos: number };
+
+export type MarketWithNegRisk = Market & { negRisk: NegRisk };
