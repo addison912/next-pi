@@ -1,10 +1,10 @@
 import { getProfitableMarkets } from "@/server/utils/risk";
 import MarketCard from "@/app/components/MarketCard";
 import Link from "next/link";
-import { markets } from "@/dummy-data/marketsWithNegRisk";
+// import { markets } from "@/dummy-data/marketsWithNegRisk";
 
 const MarketPage = async () => {
-  // const markets = await getProfitableMarkets();
+  const markets = await getProfitableMarkets();
   console.log(markets);
   return (
     <div className="flex flex-wrap gap-[var(--flex-gap)] p-6">
