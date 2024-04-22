@@ -1,3 +1,14 @@
+export type PredictitAuth = {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+  refresh_token: string;
+  userName: string;
+  "as:device_id"?: string;
+  ".issued"?: string;
+  ".expires"?: string;
+};
+
 export type MarketContract = {
   id: number;
   dateEnd: string;

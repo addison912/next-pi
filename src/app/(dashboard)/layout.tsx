@@ -1,15 +1,15 @@
 import type { PropsWithChildren } from "react";
-import Header from "@/app/components/Header";
+import Header from "@/components/Header";
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="relative h-full min-h-screen w-screen">
+    <div className="min-h-screen">
       <Header />
-      <div
-        className={`relative top-[--header-height] min-h-[calc(100vh-var(--header-height))] bg-gray-900`}
+      <main
+        className={`relative min-h-screen bg-slate-800 pt-[var(--header-height)]`}
       >
         {children}
-      </div>
+      </main>
     </div>
   );
 };

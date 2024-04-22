@@ -6,6 +6,34 @@ import {
   type Contract,
   type FullContractData,
 } from "@/types";
+const baseUrl = "https://www.predictit.org";
+
+import { type PredictitAuth } from "@/types/predictit";
+
+type Login = {
+  email: string;
+  password: string;
+};
+
+const login = async ({ email, password }: Login) => {
+  const body = `email=${encodeURIComponent(email)}&password=${encodeURIComponent(
+    password,
+  )}&grant_type=password&rememberMe=false`;
+
+  console.log(body);
+  const data = await axios
+    .post("https://www.predictit.org/api/Account/token", body, {
+      headers: {
+        accept: "application/json, text/plain, */*",
+        "content-type": "application/x-www-form-urlencoded",
+      },
+    })
+    .then((res) => {
+      console.log(res.data);
+      return res.data as PredictitAuth;
+    });
+  return data;
+};
 
 const getOrderBookContracts = async () => {
   const res = await axios.get(
@@ -23,7 +51,7 @@ const getMarkets = async () => {
 
 const getContracts = async (id: string) => {
   const constracts = await axios
-    .get(`https://www.predictit.org/api/Market/${id}/Contracts`)
+    .get(`${baseUrl}/api/Market/${id}/Contracts`)
     .then((res) => {
       return res.data as ContractResponse;
     });

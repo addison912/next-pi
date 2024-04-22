@@ -14,9 +14,13 @@ export default {
       colors: {
         "dm-text": "#f8f8f8",
         "dm-bg": "var(gray-900)",
-        "lm-text": "#1a1a1a",
-        "lm-bg": "#f8f8f8",
         "background-primary": "#1a1a1a",
+      },
+      boxShadow: {
+        md: "4px 4px 7px 0px rgb(0, 0, 0, .3)",
+      },
+      screens: {
+        xs: "475px",
       },
     },
   },

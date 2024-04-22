@@ -1,23 +1,29 @@
-import { getProfitableMarkets } from "@/server/utils/risk";
-import MarketCard from "@/app/components/MarketCard";
-import Link from "next/link";
-// import { markets } from "@/dummy-data/marketsWithNegRisk";
+import { getProfitableMarkets } from "@/server/predictit/risk";
+import MarketCard from "@/components/MarketCard";
+import { markets as dummyData } from "@/dummy-data/marketsWithNegRisk";
 
 const MarketPage = async () => {
-  const markets = await getProfitableMarkets();
+  const markets =
+    process.env.NODE_ENV === "development"
+      ? dummyData
+      : await getProfitableMarkets();
   console.log(markets);
   return (
-    <div className="flex flex-wrap gap-[var(--flex-gap)] p-6">
+    <div className="flex flex-wrap gap-[var(--flex-gap)] p-[24px] sm:pr-[24px] md:pr-[calc(24px-var(--flex-gap))]">
       {markets.map((market) => (
-        <Link
+        <div
           key={market.id}
-          href={`/market/${market.id}`}
-          className="mx-auto flex w-[calc(50%-var(--flex-gap))] overflow-hidden rounded-md bg-slate-800 shadow-md"
+          className="sm:w-[100%] md:w-[calc(50%-var(--flex-gap))] lg:w-[calc(33.3%-var(--flex-gap))]"
         >
           <MarketCard market={market} />
-        </Link>
+        </div>
       ))}
-      <div className="invisible mx-auto flex w-[calc(50%-var(--flex-gap))]"></div>
+      {[1, 2, 3].map((_, i) => (
+        <div
+          key={i}
+          className="invisible h-0 md:w-[calc(50%-var(--flex-gap))] lg:w-[calc(33.3%-var(--flex-gap))]"
+        ></div>
+      ))}
     </div>
   );
 };

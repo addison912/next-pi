@@ -4,7 +4,7 @@ import {
   type NegRisk,
   type MarketWithNegRisk,
 } from "@/types";
-import { getMarkets } from "./predictit";
+import { getMarkets } from "./api";
 
 function calcOpt(bestNoPrice: number) {
   return 1 / (1 - (1 - bestNoPrice) * 0.1);

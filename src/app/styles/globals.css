@@ -16,5 +16,9 @@ body {
   --aside-width: 144px;
   --font-size: 16px;
   --font-color: #fafafa;
+  --font-color-data: #ffaa00;
   --flex-gap: 16px;
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Space Grotesk", sans-serif;
+  --font-mono: "Fira Code", monospace;
 }

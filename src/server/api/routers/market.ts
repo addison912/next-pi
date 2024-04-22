@@ -1,5 +1,5 @@
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { getProfitableMarkets } from "@/server/utils/risk";
+import { getProfitableMarkets } from "@/server/predictit/risk";
 
 export const marketRouter = createTRPCRouter({
   getAll: publicProcedure.query(async () => {

@@ -10,4 +10,5 @@ export type {
   ContractOrderRec,
   NegRisk,
   MarketWithNegRisk,
+  PredictitAuth,
 } from "./predictit";
