@@ -1,6 +1,7 @@
 export type {
   OrderBookResponse,
   OrderBookContract,
+  OrderBookContractEntity,
   MarketResponse,
   ContractResponse,
   Market,
@@ -11,4 +12,6 @@ export type {
   NegRisk,
   MarketWithNegRisk,
   PredictitAuth,
+  MarketDetails,
+  ContractWithOpt,
 } from "./predictit";

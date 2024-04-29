@@ -1,12 +1,11 @@
 import { type Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        primary: ["var(--font-roboto_flex)"],
       },
       backgroundImage: {
         "gradient-307": "linear-gradient(307deg, var(--tw-gradient-stops))",

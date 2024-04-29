@@ -5,24 +5,23 @@ import {
   type ContractResponse,
   type Contract,
   type FullContractData,
+  type PredictitAuth,
+  type MarketDetails,
+  type MarketWithNegRisk,
 } from "@/types";
+import { logger } from "@/utils/logger";
+import { calcNegRisk } from "@/utils/risk";
+
 const baseUrl = "https://www.predictit.org";
 
-import { type PredictitAuth } from "@/types/predictit";
-
-type Login = {
-  email: string;
-  password: string;
-};
-
-const login = async ({ email, password }: Login) => {
+const login = async (email: string, password: string) => {
   const body = `email=${encodeURIComponent(email)}&password=${encodeURIComponent(
     password,
   )}&grant_type=password&rememberMe=false`;
 
   console.log(body);
   const data = await axios
-    .post("https://www.predictit.org/api/Account/token", body, {
+    .post(`${baseUrl}/api/Account/token`, body, {
       headers: {
         accept: "application/json, text/plain, */*",
         "content-type": "application/x-www-form-urlencoded",
@@ -44,9 +43,19 @@ const getOrderBookContracts = async () => {
 };
 
 const getMarkets = async () => {
-  const res = await axios.get("https://www.predictit.org/api/marketdata/all/");
+  const res = await axios.get(`${baseUrl}/api/marketdata/all/`).catch((err) => {
+    logger.error(err);
+  });
+  if (!res) {
+    return [];
+  }
   const data = res.data as MarketResponse;
   return data.markets;
+};
+
+const getMarketDetails = async (id: string) => {
+  const res = await axios.get(`${baseUrl}/api/Market/${id}`);
+  return res.data as MarketDetails;
 };
 
 const getContracts = async (id: string) => {
@@ -54,6 +63,10 @@ const getContracts = async (id: string) => {
     .get(`${baseUrl}/api/Market/${id}/Contracts`)
     .then((res) => {
       return res.data as ContractResponse;
+    })
+    .catch((err) => {
+      logger.error(err);
+      return [];
     });
   return constracts;
 };
@@ -73,4 +86,26 @@ const getContractData = async (id: string) => {
   return marketContracts;
 };
 
-export { getContractData, getMarkets, getContracts };
+const getProfitableMarkets = async () => {
+  const markets = await getMarkets();
+  const profitableMarkets: MarketWithNegRisk[] = [];
+  markets.forEach((market) => {
+    if (market.contracts.length > 1) {
+      const negRisk = calcNegRisk(market.contracts)!;
+      if (negRisk.minWin > 0) {
+        const marketWithNegRisk = { ...market, negRisk };
+        profitableMarkets.push(marketWithNegRisk);
+      }
+    }
+  });
+  return profitableMarkets;
+};
+
+export {
+  getContractData,
+  getMarkets,
+  getMarketDetails,
+  getContracts,
+  login,
+  getProfitableMarkets,
+};

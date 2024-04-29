@@ -36,6 +36,41 @@ export type Market = {
   status: string;
 };
 
+export type MarketDetails = {
+  marketId: number;
+  marketName: string;
+  imageName: string;
+  marketType: number;
+  dateEndString: string;
+  isActive: boolean;
+  rule: string;
+  userHasOwnership: boolean;
+  userHasTradeHistory: boolean;
+  userInvestment: number;
+  userMaxPayout: number;
+  info?: null;
+  dateOpened: string;
+  isMarketWatched: boolean;
+  seoTitle?: string;
+  seoDescription?: string;
+  marketUrl: string;
+  status: string;
+  isOpen: boolean;
+  isOpenStatusMessage: string;
+  isTradingSuspended: boolean;
+  isTradingSuspendedMessage?: boolean | null;
+  isEngineBusy: boolean;
+  isEngineBusyMessage?: boolean | null;
+  disqus_Identifier?: string;
+  disqus_Title?: string;
+  disqus_UserAuth?: boolean | null;
+  disqus_Url?: string;
+  disqus_PrevThreadID?: number;
+  disqus_NextThreadID?: number | null;
+  disqus_ArchivedCommentsTotal?: number;
+  econIndicatorTradeStatus: number;
+};
+
 export type MarketResponse = {
   markets: Market[];
 };
@@ -108,3 +143,8 @@ export type ContractOrderRec = {
 export type NegRisk = { minWin: number; sumNos: number };
 
 export type MarketWithNegRisk = Market & { negRisk: NegRisk };
+
+export type ContractWithOpt = FullContractData & {
+  opt?: number;
+  optQuantity?: number;
+};

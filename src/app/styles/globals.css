@@ -9,6 +9,8 @@
 
 body {
   @apply text-white;
+  @apply font-primary;
+  @apply font-thin;
 }
 
 :root {
@@ -18,7 +20,6 @@ body {
   --font-color: #fafafa;
   --font-color-data: #ffaa00;
   --flex-gap: 16px;
-  --font-primary: "Inter", sans-serif;
   --font-secondary: "Space Grotesk", sans-serif;
   --font-mono: "Fira Code", monospace;
 }
