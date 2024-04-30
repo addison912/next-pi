@@ -7,7 +7,13 @@ await import("./src/env.js");
 /** @type {import("next").NextConfig} */
 const config = {
   images: {
-    domains: ["az620379.vo.msecnd.net"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "az620379.vo.msecnd.net",
+        pathname: "**",
+      },
+    ],
   },
 };
 

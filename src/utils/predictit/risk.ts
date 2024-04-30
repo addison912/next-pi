@@ -6,7 +6,6 @@ import {
   type OrderBookContractEntity,
   type ContractWithOpt,
 } from "@/types";
-import { logger } from "./logger";
 
 function calcOpt(bestNoPrice: number) {
   return 1 / (1 - (1 - bestNoPrice) * 0.1);
@@ -56,7 +55,7 @@ const calcNegRisk = (
     });
     return { minWin, sumNos } as NegRisk;
   } catch (err) {
-    logger.error(err);
+    console.log(err);
   }
 };
 
@@ -81,7 +80,7 @@ const getMaxShares = (contractData: FullContractData[]) => {
     console.log(quotient);
     return quotient;
   } catch (err) {
-    logger.error(err);
+    console.log(err);
   }
 };
 
@@ -101,4 +100,4 @@ function calcOptOrder(
   return { contracts, negRisk };
 }
 
-export { calcOptOrder, calcOpt, calcNegRisk };
+export { calcOptOrder, calcOpt, calcNegRisk, getMaxShares };

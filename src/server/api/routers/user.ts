@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 

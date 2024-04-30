@@ -1,4 +1,4 @@
-import { getProfitableMarkets } from "@/utils/risk";
+import { getProfitableMarkets } from "@/utils/predictit/api";
 import MarketCard from "@/components/MarketCard";
 import { markets as dummyData } from "@/dummy-data/marketsWithNegRisk";
 

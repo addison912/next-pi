@@ -1,11 +1,11 @@
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/server/db";
 
 const createUser = async () => {
   const user = await currentUser();
   if (!user?.emailAddresses[0]?.emailAddress) {
-    return new Error("No user found");
+    return <div>Not signed in</div>;
   }
   const match = await db.user.findUnique({
     where: {

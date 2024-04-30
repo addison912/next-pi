@@ -10,7 +10,7 @@ import {
   type MarketWithNegRisk,
 } from "@/types";
 import { logger } from "@/utils/logger";
-import { calcNegRisk } from "@/utils/risk";
+import { calcNegRisk } from "@/utils/predictit/risk";
 
 const baseUrl = "https://www.predictit.org";
 

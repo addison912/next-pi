@@ -7,12 +7,21 @@ import {
 import { calcOptOrder } from "@/utils/predictit/risk";
 import { z } from "zod";
 
-export const marketRouter = createTRPCRouter({
+export const alertRouter = createTRPCRouter({
+  create: publicProcedure
+    .input(
+      z.object({
+        marketID: z.string().min(4),
+        value: z.number(),
+        type: z.string(),
+      }),
+    )
+    .mutation(async ({ input }) => {}),
   getAll: publicProcedure.query(async () => {
-    const markets = await getProfitableMarkets();
-    return markets;
+    const alerts = await getProfitableMarkets();
+    return alerts;
   }),
-  getMarketByID: publicProcedure
+  getAlertsByUserID: publicProcedure
     .input(
       z.object({
         marketID: z.string().min(4),
@@ -21,7 +30,7 @@ export const marketRouter = createTRPCRouter({
     .query(async ({ input }) => {
       return getMarketDetails(input.marketID.toString());
     }),
-  getOptOrder: publicProcedure
+  getAlertsByMarket: publicProcedure
     .input(
       z.object({
         marketID: z.string().min(4),
