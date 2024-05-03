@@ -74,6 +74,14 @@ const getContracts = async (id: string) => {
 const getContractData = async (id: string) => {
   const contracts = await getContracts(id);
   const orderBookContracts = await getOrderBookContracts();
+  if (
+    !contracts ||
+    !orderBookContracts ||
+    contracts.length === 0 ||
+    Object.keys(orderBookContracts).length === 0
+  ) {
+    return [];
+  }
   const marketContracts: FullContractData[] = [];
   contracts.forEach((contract: Contract) => {
     const contractData = orderBookContracts[contract.contractId];

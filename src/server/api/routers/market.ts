@@ -25,12 +25,11 @@ export const marketRouter = createTRPCRouter({
     .input(
       z.object({
         marketID: z.string().min(4),
-        maxShares: z.number().optional(),
       }),
     )
     .query(async ({ input }) => {
       const contractData = await getContractData(input.marketID.toString());
-      const markets = calcOptOrder(contractData, input.maxShares);
+      const markets = calcOptOrder(contractData);
       return markets;
     }),
 });

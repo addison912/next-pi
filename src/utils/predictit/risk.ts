@@ -84,14 +84,11 @@ const getMaxShares = (contractData: FullContractData[]) => {
   }
 };
 
-function calcOptOrder(
-  contractData: FullContractData[],
-  userMaxShares?: number,
-) {
-  const maxShares = userMaxShares ? userMaxShares : getMaxShares(contractData)!;
+function calcOptOrder(contractData: FullContractData[]) {
+  const maxShares = getMaxShares(contractData)!;
   const contracts: ContractWithOpt[] = [];
   contractData.forEach((contract) => {
-    const newContract: ContractWithOpt = contract;
+    const newContract: ContractWithOpt = { ...contract };
     newContract.opt = calcOpt(newContract.bestNoPrice);
     newContract.optQuantity = Math.round(newContract.opt * maxShares);
     contracts.push(newContract);

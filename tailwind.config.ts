@@ -21,6 +21,15 @@ export default {
       screens: {
         xs: "475px",
       },
+      keyframes: {
+        "open-menu": {
+          "0%": { transform: "scaleY(0)" },
+          "100%": { transform: "scaleY(1)" },
+        },
+      },
+      animation: {
+        "open-menu": "open-menu 0.1s ease-in-out",
+      },
     },
   },
   plugins: [],

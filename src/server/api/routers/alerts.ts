@@ -1,10 +1,5 @@
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import {
-  getContractData,
-  getMarketDetails,
-  getProfitableMarkets,
-} from "@/utils/predictit/api";
-import { calcOptOrder } from "@/utils/predictit/risk";
+import { getUserByClerkID } from "@/utils/auth";
 import { z } from "zod";
 
 export const alertRouter = createTRPCRouter({
@@ -14,32 +9,86 @@ export const alertRouter = createTRPCRouter({
         marketID: z.string().min(4),
         value: z.number(),
         type: z.string(),
+        maxFreq: z.number(),
+        active: z.boolean(),
       }),
     )
-    .mutation(async ({ input }) => {}),
-  getAll: publicProcedure.query(async () => {
-    const alerts = await getProfitableMarkets();
+    .mutation(async ({ input, ctx }) => {
+      const user = await getUserByClerkID();
+      const alert = await ctx.db.alert.create({
+        data: {
+          marketID: input.marketID,
+          value: input.value,
+          type: input.type,
+          maxFreq: input.maxFreq,
+          active: input.active,
+          userID: user.id,
+        },
+      });
+      return alert;
+    }),
+
+  getUserAlerts: publicProcedure.query(async ({ ctx }) => {
+    const user = await getUserByClerkID();
+    const alerts = ctx.db.alert.findMany({
+      where: {
+        userID: user.id,
+      },
+      select: {
+        id: true,
+        marketID: true,
+        type: true,
+        value: true,
+        active: true,
+        maxFreq: true,
+      },
+    });
     return alerts;
   }),
-  getAlertsByUserID: publicProcedure
+  getUserAlertByMarket: publicProcedure
     .input(
       z.object({
         marketID: z.string().min(4),
       }),
     )
-    .query(async ({ input }) => {
-      return getMarketDetails(input.marketID.toString());
+    .query(async ({ input, ctx }) => {
+      const user = await getUserByClerkID();
+      const alert = await ctx.db.alert.findUnique({
+        where: {
+          userID_marketID: {
+            userID: user.id,
+            marketID: input.marketID,
+          },
+        },
+      });
+      return alert;
     }),
-  getAlertsByMarket: publicProcedure
+  updateAlert: publicProcedure
     .input(
       z.object({
         marketID: z.string().min(4),
-        maxShares: z.number().optional(),
+        value: z.number(),
+        type: z.string(),
+        maxFreq: z.number(),
+        active: z.boolean(),
       }),
     )
-    .query(async ({ input }) => {
-      const contractData = await getContractData(input.marketID.toString());
-      const markets = calcOptOrder(contractData, input.maxShares);
-      return markets;
+    .mutation(async ({ input, ctx }) => {
+      const user = await getUserByClerkID();
+      const alert = await ctx.db.alert.update({
+        where: {
+          userID_marketID: {
+            userID: user.id,
+            marketID: input.marketID,
+          },
+        },
+        data: {
+          value: input.value,
+          type: input.type,
+          maxFreq: input.maxFreq,
+          active: input.active,
+        },
+      });
+      return alert;
     }),
 });

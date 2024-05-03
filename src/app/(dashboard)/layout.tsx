@@ -6,7 +6,7 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
     <div className="min-h-screen">
       <Header />
       <main
-        className={`relative min-h-screen bg-slate-800 pt-[var(--header-height)]`}
+        className={`relative min-h-screen bg-slate-900 pt-[var(--header-height)]`}
       >
         {children}
       </main>

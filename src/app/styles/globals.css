@@ -16,10 +16,21 @@ body {
 :root {
   --header-height: 56px;
   --aside-width: 144px;
+  --header-padding: 48px;
   --font-size: 16px;
   --font-color: #fafafa;
   --font-color-data: #ffaa00;
   --flex-gap: 16px;
   --font-secondary: "Space Grotesk", sans-serif;
   --font-mono: "Fira Code", monospace;
+}
+
+@layer utilities {
+  .section-min-height {
+    min-height: calc(100vh - var(--header-height));
+  }
+
+  .toggle-btn {
+    @apply [&>div:first-child::after]:translate-y-0 [&>div:first-child::after]:-rotate-45 [&>div:first-child::before]:translate-y-0 [&>div:first-child::before]:rotate-45 [&>div:first-child]:rotate-[90deg] [&>div:first-child]:bg-transparent;
+  }
 }
