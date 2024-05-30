@@ -46,16 +46,16 @@ const MarketDetails = ({ order }: ContractsProps) => {
         <div className="flex items-center bg-teal-900 max-md:text-base max-sm:text-[12px]">
           <span className="w-[12.5%] text-center">Risk</span>
           <span className="w-[12.5%] text-center">No Sum</span>
-          <span className="w-[25%] text-center">Alert</span>
-          <span className="w-[25%] text-center">Alert Type</span>
-          <span className="w-[25%] text-center">Alert Value</span>
+          <span className="w-[16%] text-center">Alert</span>
+          <span className="w-[20%] text-center">Alert Type</span>
+          <span className="w-[16%] text-center">Alert Value</span>
         </div>
         <div className="flex  items-center bg-background-primary py-2 sm:text-base md:text-xl lg:text-2xl">
           <div className="w-[12.5%] text-center">
             {negRisk.minWin > 0 ? `(${negRisk.minWin})` : negRisk.minWin}
           </div>
           <div className="w-[12.5%] text-center">{negRisk.sumNos}</div>
-          <div className="flex w-[25%] justify-center">
+          <div className="flex w-[16%] justify-center">
             <label className="inline-flex cursor-pointer items-center">
               <input
                 value=""
@@ -67,17 +67,17 @@ const MarketDetails = ({ order }: ContractsProps) => {
               <div className="peer-focus:none peer relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-green-600 peer-checked:after:translate-x-full peer-checked:after:border-white rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700"></div>
             </label>
           </div>
-          <div className="flex w-[25%] justify-center">
+          <div className="flex w-[20%] justify-center">
             <select className="block rounded-md border border-gray-600 bg-gray-700 p-[5.5px] text-sm text-white placeholder-gray-400 focus:outline-none">
               <option className="p-2" value="neg-risk">
-                Negative Risk
+                Risk
               </option>
               <option className="p-2" value="sum-no">
                 No Sum
               </option>
             </select>
           </div>
-          <div className="relative flex w-[25%] justify-center">
+          <div className="relative flex w-[16%] justify-center">
             <div className="flex">
               <div className="pointer-events-none absolute inset-y-0 flex items-center ps-1 text-sm">
                 $

@@ -1,6 +1,7 @@
 import "@/app/styles/globals.css";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
+import { roboto_flex } from "@/utils/fonts";
 
 export const metadata: Metadata = {
   title: "Predictit Insights",
@@ -17,7 +18,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`min-w-360 overflow-scroll`}>{children}</body>
+        <body className={`min-w-360 overflow-scroll ${roboto_flex}`}>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );

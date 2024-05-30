@@ -1,3 +1,5 @@
+/* --------------------------- Predictit API types -------------------------- */
+
 export type PredictitAuth = {
   access_token: string;
   token_type: string;
@@ -123,9 +125,7 @@ export type OrderBookContract = {
  */
 export type OrderBookResponse = Record<string, OrderBookContract>;
 
-/* -------------------------------------------------------------------------- */
-/*                              // Modified types                             */
-/* -------------------------------------------------------------------------- */
+/* ----------------------------- Modified Predictit types ----------------------------- */
 
 /**
  * This is the contract data that includes the order book data
