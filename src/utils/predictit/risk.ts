@@ -8,6 +8,9 @@ import {
 } from "@/types";
 
 function calcOpt(bestNoPrice: number) {
+  if (!bestNoPrice) {
+    return 1.001;
+  }
   return 1 / (1 - (1 - bestNoPrice) * 0.1);
 }
 

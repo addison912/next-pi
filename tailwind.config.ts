@@ -26,9 +26,14 @@ export default {
           "0%": { transform: "scaleY(0)" },
           "100%": { transform: "scaleY(1)" },
         },
+        "close-menu": {
+          "0%": { transform: "scaleY(1)" },
+          "100%": { transform: "scaleY(0)" },
+        },
       },
       animation: {
         "open-menu": "open-menu 0.1s ease-in-out",
+        "close-menu": "close-menu 0.2s ease-in-out",
       },
     },
   },

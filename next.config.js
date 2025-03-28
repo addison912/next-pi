@@ -13,6 +13,11 @@ const config = {
         hostname: "az620379.vo.msecnd.net",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn1.predictit.org",
+        pathname: "**",
+      },
     ],
   },
 };

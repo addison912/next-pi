@@ -1,12 +1,12 @@
 "use client";
-import { useRef, useEffect, MutableRefObject } from "react";
+import { useRef, useEffect, type MutableRefObject } from "react";
 
 const useOutsideClick = (callback: () => void) => {
-  const ref: MutableRefObject<any> = useRef();
+  const ref: MutableRefObject<HTMLDivElement | null> = useRef(null);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target)) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
         callback();
       }
     };
@@ -18,7 +18,7 @@ const useOutsideClick = (callback: () => void) => {
     };
   }, [ref]);
 
-  return ref as MutableRefObject<any>;
+  return ref;
 };
 
 export default useOutsideClick;
