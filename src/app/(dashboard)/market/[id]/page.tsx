@@ -2,12 +2,13 @@ import MarketDetailsHeader from "@/components/MarketDetailsHeader";
 import { api } from "@/trpc/server";
 import MarketDetails from "@/components/MarketDetails";
 interface MarketDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-const MarketDetailPage = async ({ params }: MarketDetailPageProps) => {
+const MarketDetailPage = async (props: MarketDetailPageProps) => {
+  const params = await props.params;
   const order = await api.market.getOptOrder({ marketID: params.id });
   return (
     <div className="mt-6 flex flex-col items-center sm:mx-1 md:mx-4">

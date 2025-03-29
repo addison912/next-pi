@@ -1,35 +1,88 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-  min-width: 0;
+@theme {
+  --font-primary: var(--font-roboto_flex);
+
+  --background-image-gradient-307: linear-gradient(
+    307deg,
+    var(--tw-gradient-stops)
+  );
+
+  --color-dm-text: #f8f8f8;
+  --color-dm-bg: var(gray-900);
+  --color-background-primary: #1a1a1a;
+
+  --shadow-md: 4px 4px 7px 0px rgb(0, 0, 0, 0.3);
+
+  --breakpoint-xs: 475px;
+
+  --animate-open-menu: open-menu 0.1s ease-in-out;
+  --animate-close-menu: close-menu 0.2s ease-in-out;
+
+  @keyframes open-menu {
+    0% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+  @keyframes close-menu {
+    0% {
+      transform: scaleY(1);
+    }
+    100% {
+      transform: scaleY(0);
+    }
+  }
 }
 
-body {
-  @apply text-white;
-  @apply font-primary;
-  @apply font-thin;
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
 }
 
-:root {
-  --header-height: 56px;
-  --aside-width: 144px;
-  --header-padding: 48px;
-  --font-size: 16px;
-  --font-color: #fafafa;
-  --font-color-data: #ffaa00;
-  --flex-gap: 16px;
-  --font-mono: "Fira Code", monospace;
+@utility section-min-height {
+  min-height: calc(100vh - var(--header-height));
+}
+
+@utility toggle-btn {
+  @apply [&>div:first-child]:rotate-[90deg] [&>div:first-child]:bg-transparent [&>div:first-child::after]:translate-y-0 [&>div:first-child::after]:-rotate-45 [&>div:first-child::before]:translate-y-0 [&>div:first-child::before]:rotate-45;
 }
 
 @layer utilities {
-  .section-min-height {
-    min-height: calc(100vh - var(--header-height));
+  * {
+    box-sizing: border-box;
+    min-width: 0;
   }
 
-  .toggle-btn {
-    @apply [&>div:first-child::after]:translate-y-0 [&>div:first-child::after]:-rotate-45 [&>div:first-child::before]:translate-y-0 [&>div:first-child::before]:rotate-45 [&>div:first-child]:rotate-[90deg] [&>div:first-child]:bg-transparent;
+  body {
+    @apply text-white;
+    @apply font-primary;
+    @apply font-thin;
+  }
+
+  :root {
+    --header-height: 56px;
+    --aside-width: 144px;
+    --header-padding: 48px;
+    --font-size: 16px;
+    --font-color: #fafafa;
+    --font-color-data: #ffaa00;
+    --flex-gap: 16px;
+    --font-mono: "Fira Code", monospace;
   }
 }

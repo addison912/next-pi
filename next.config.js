@@ -18,6 +18,11 @@ const config = {
         hostname: "cdn1.predictit.org",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "placecats.com",
+        pathname: "**",
+      },
     ],
   },
 };

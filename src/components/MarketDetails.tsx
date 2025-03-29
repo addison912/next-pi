@@ -73,7 +73,7 @@ const MarketDetails = ({ order }: ContractsProps) => {
   return (
     <div>
       {/* Container with risk and alert details */}
-      <ul className="mb-6 mt-6">
+      <ul className="mt-6 mb-6">
         <li className="flex items-center bg-teal-900 py-1 text-[12px]">
           <span className="w-[12.5%] text-center">Risk</span>
           <span className="w-[12.5%] text-center">No Sum</span>
@@ -82,7 +82,7 @@ const MarketDetails = ({ order }: ContractsProps) => {
           <span className="w-[16%] text-center">Alert Value</span>
           <span className="w-[28%] text-center">Max Frequency</span>
         </li>
-        <li className="flex  items-center bg-background-primary py-2 sm:text-base md:text-xl lg:text-2xl">
+        <li className="bg-background-primary flex items-center py-2 sm:text-base md:text-xl lg:text-2xl">
           <div className="w-[12.5%] text-center">
             {negRisk.minWin > 0
               ? `$(${negRisk.minWin.toFixed(2)})`
@@ -100,11 +100,11 @@ const MarketDetails = ({ order }: ContractsProps) => {
                 checked={alert || false}
                 onChange={() => setAlert(!alert)}
               />
-              <div className="peer-focus:none peer relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-green-600 peer-checked:after:translate-x-full peer-checked:after:border-white rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700"></div>
+              <div className="peer-focus:none peer relative h-6 w-11 rounded-full bg-gray-200 peer-checked:bg-green-600 after:absolute after:start-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:rtl:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700"></div>
             </label>
           </div>
           <div className="flex w-[18.5%] justify-center">
-            <select className="block rounded-md border border-gray-600 bg-gray-700 p-1 text-sm text-white placeholder-gray-400 focus:outline-none">
+            <select className="block rounded-md border border-gray-600 bg-gray-700 p-1 text-sm text-white placeholder-gray-400 focus:outline-hidden">
               <option className="p-2" value="neg-risk">
                 Risk
               </option>
@@ -122,7 +122,7 @@ const MarketDetails = ({ order }: ContractsProps) => {
                 type="number"
                 step="0.01"
                 value={parseFloat(alertVal)}
-                className="block w-[5.5rem] rounded-md  border border-gray-600 bg-gray-700 py-[2px] pl-4 text-base text-white placeholder-gray-400 focus:border-none focus:outline-none"
+                className="block w-[5.5rem] rounded-md border border-gray-600 bg-gray-700 py-[2px] pl-4 text-base text-white placeholder-gray-400 focus:border-none focus:outline-hidden"
                 onChange={(e) => {
                   setAlertVal(e.target.value);
                 }}
@@ -133,14 +133,14 @@ const MarketDetails = ({ order }: ContractsProps) => {
             <div className="flex">
               <input
                 type="number"
-                className={` ${alertFreqMenu ? "rounded-tl-lg" : "rounded-s-lg"} inline-flex w-16 flex-shrink-0 items-center border border-gray-600  bg-gray-700 p-1 text-center text-sm font-medium`}
+                className={` ${alertFreqMenu ? "rounded-tl-lg" : "rounded-s-lg"} inline-flex w-16 shrink-0 items-center border border-gray-600 bg-gray-700 p-1 text-center text-sm font-medium`}
                 value={alertFreq}
                 onFocus={() => setAlertFreqMenu(!alertFreqMenu)}
                 onChange={(e) => setAlertFreq(e.target.value)}
               />
               {/* Frequncy Value Dropdown */}
               <div
-                className={`z-10 ${alertFreqMenu ? "absolute" : "hidden"} mt-[29px] w-16 divide-y divide-gray-100 rounded-b-lg border border-gray-600 bg-white shadow dark:bg-gray-700`}
+                className={`z-10 ${alertFreqMenu ? "absolute" : "hidden"} mt-[29px] w-16 divide-y divide-gray-100 rounded-b-lg border border-gray-600 bg-white shadow-sm dark:bg-gray-700`}
               >
                 <ul
                   className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -164,7 +164,7 @@ const MarketDetails = ({ order }: ContractsProps) => {
               <div className="relative w-full">
                 <button
                   type="button"
-                  className={` ${alertFreqUnitMenu ? "rounded-tr-lg" : "rounded-e-lg"} inline-flex w-16 flex-shrink-0 items-center border border-gray-600  bg-gray-700 p-1 text-center text-sm font-medium`}
+                  className={` ${alertFreqUnitMenu ? "rounded-tr-lg" : "rounded-e-lg"} inline-flex w-16 shrink-0 items-center border border-gray-600 bg-gray-700 p-1 text-center text-sm font-medium`}
                   value={alertFreq}
                   onClick={() => handleUnitButtonClick()}
                 >
@@ -172,7 +172,7 @@ const MarketDetails = ({ order }: ContractsProps) => {
                 </button>
                 {/* Frequncy Unit Dropdown */}
                 <div
-                  className={`z-10 ${alertFreqUnitMenu ? "absolute" : "hidden"} w-16 divide-y divide-gray-100 rounded-b-lg border border-gray-600 bg-white shadow dark:bg-gray-700`}
+                  className={`z-10 ${alertFreqUnitMenu ? "absolute" : "hidden"} w-16 divide-y divide-gray-100 rounded-b-lg border border-gray-600 bg-white shadow-sm dark:bg-gray-700`}
                 >
                   <ul
                     className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -211,7 +211,7 @@ const MarketDetails = ({ order }: ContractsProps) => {
           {contracts.map((contract) => (
             <li
               key={contract.contractId}
-              className="flex items-center bg-background-primary"
+              className="bg-background-primary flex items-center"
             >
               <Image
                 src={contract.contractImageUrl}
@@ -235,7 +235,7 @@ const MarketDetails = ({ order }: ContractsProps) => {
               <span className="w-[16.66%]">
                 <input
                   type="number"
-                  className=" rounded-lg bg-inherit   bg-slate-700 pl-2 outline-none sm:w-16 md:w-24"
+                  className="rounded-lg bg-inherit bg-slate-700 pl-2 outline-hidden sm:w-16 md:w-24"
                   value={contract.optQuantity}
                   onChange={(e) => {
                     handleQuantityChange(e, contract);

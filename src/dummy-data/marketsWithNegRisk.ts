@@ -4,8 +4,7 @@ export const markets = [
     name: "Who will win the 2024 Republican vice presidential nomination?",
     shortName: "Republican VP nominee?",
     negRisk: { minWin: 7.72, sumNos: 1.08 },
-    image:
-      "https://az620379.vo.msecnd.net/images/Markets/254f97db-a7ed-4348-831c-7394567f2a2e.png",
+    image: "https://placecats.com/300/200",
     url: "https://www.predictit.org/markets/detail/8069/Who-will-win-the-2024-Republican-vice-presidential-nomination",
     contracts: [
       {
@@ -321,15 +320,14 @@ export const markets = [
     name: "Which party will win the 2024 US Senate election in Arizona?",
     shortName: "Which party will win the AZ Senate race?",
     negRisk: { minWin: 22.29, sumNos: 1.12 },
-    image:
-      "https://az620379.vo.msecnd.net/images/Markets/7479c4a3-63f5-40f3-be14-ad94a3cbfa99.jpg",
+    image: "https://placecats.com/300/200",
     url: "https://www.predictit.org/markets/detail/8070/Which-party-will-win-the-2024-US-Senate-election-in-Arizona",
     contracts: [
       {
         id: 31257,
         dateEnd: "NA",
         image:
-          "https://az620379.vo.msecnd.net/images/Contracts/small_4925e586-edc2-4238-8237-e8c2b2fa429d.png",
+          "https://az620379.vo.msecnd.net/images/Contracts/small_dc2c8290-c5d5-4561-8c1a-31762c3972bb.png",
         name: "Democratic",
         shortName: "Democractic",
         status: "Open",
@@ -382,8 +380,7 @@ export const markets = [
     name: "What will be the Electoral College margin in the 2024 presidential election?",
     shortName: "Electoral College margin in 2024?",
     negRisk: { minWin: 28.57, sumNos: 1.13 },
-    image:
-      "https://az620379.vo.msecnd.net/images/Markets/fb367c5c-1583-414f-844b-f7b55cb7c2ec.jpg",
+    image: "https://placecats.com/300/200",
     url: "https://www.predictit.org/markets/detail/8077/What-will-be-the-Electoral-College-margin-in-the-2024-presidential-election",
     contracts: [
       {
@@ -651,8 +648,7 @@ export const markets = [
     name: "Who will win the 2024 Republican presidential nomination?",
     shortName: "GOP 2024 presidential nominee?",
     negRisk: { minWin: 42.92, sumNos: 1.14 },
-    image:
-      "https://az620379.vo.msecnd.net/images/Markets/b2def0a6-92a1-4247-bc77-ec76ebea642f.jpg",
+    image: "https://placecats.com/300/200",
     url: "https://www.predictit.org/markets/detail/7053/Who-will-win-the-2024-Republican-presidential-nomination",
     contracts: [
       {
@@ -1000,8 +996,7 @@ export const markets = [
     name: "Which party will win the 2024 U.S. presidential election?",
     shortName: "Which party wins the presidency in 2024?",
     negRisk: { minWin: 15.44, sumNos: 1.1 },
-    image:
-      "https://az620379.vo.msecnd.net/images/Markets/4a0705c2-577f-47f6-afa5-d1510d771597.jpg",
+    image: "https://placecats.com/300/200",
     url: "https://www.predictit.org/markets/detail/6867/Which-party-will-win-the-2024-US-presidential-election",
     contracts: [
       {

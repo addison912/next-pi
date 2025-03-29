@@ -1,0 +1,15 @@
+{
+  "keep": {
+    "days": false,
+    "amount": 30
+  },
+  "auditLog": "[project]/src/utils/logger.ts [app-rsc] (ecmascript)/logs/error/.ba931040027c00e001ebee44bbff122ac85f37e1-audit.json",
+  "files": [
+    {
+      "date": 1743209542294,
+      "name": "[project]/src/utils/logger.ts [app-rsc] (ecmascript)/logs/error/2025-03-28.log",
+      "hash": "b61c2f9b446ae7fa12883a3c6e6effd6a4f1aecf82d6af02ac7464297cd7352f"
+    }
+  ],
+  "hashType": "sha256"
+}

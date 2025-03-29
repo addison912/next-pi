@@ -8,7 +8,7 @@ import { env } from "@/env";
 const logDir: string = join(__dirname, env.LOG_DIR);
 
 if (!existsSync(logDir)) {
-  mkdirSync(logDir);
+  mkdirSync(logDir, { recursive: true });
 }
 
 // Define log format
